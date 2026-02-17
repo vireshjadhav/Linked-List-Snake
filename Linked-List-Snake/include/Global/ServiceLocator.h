@@ -14,9 +14,9 @@ namespace Global
         Event::EventService* event_service;
         Graphics::GraphicService* graphic_service;
         Sound::SoundService* sound_service;
+        Level::LevelService* level_service;
         UI::UIService* ui_service;
         Time::TimeService* time_service;
-        Level::LevelService* level_service;
 
         ServiceLocator();
         ~ServiceLocator();

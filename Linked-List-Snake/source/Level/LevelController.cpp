@@ -1,6 +1,7 @@
 //LevelController.cpp
-#include "../../include/Level/LevelController.h"
-#include "../../include/Level/LevelView.h"
+#include "Level/LevelController.h"
+#include "Level/LevelModel.h"
+#include "Level/LevelView.h"
 
 namespace Level
 {
@@ -24,21 +25,21 @@ namespace Level
 
 	void LevelController::update()
 	{
-		level_model->update();
+		level_view ->update();
 	}
 
 	void LevelController::render()
 	{
-		level_model->render();
+		level_view->render();
 	}
 
 	float LevelController::getCellWidth()
 	{
-		return level_view->getGridWidth();
+		return level_model->getCellWidth();
 	}
 
 	float LevelController::getCellHeight()
 	{
-		return level_view->getGridHeight();
+		return level_model->getCellHeight();
 	}
 }

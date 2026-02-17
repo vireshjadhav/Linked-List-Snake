@@ -2,6 +2,7 @@
 #include "Level/LevelService.h"
 #include "Level/LevelController.h"
 #include "Global/ServiceLocator.h"
+#include "Level/LevelModel.h"
 
 namespace Level
 {
@@ -9,7 +10,7 @@ namespace Level
 
 	LevelService::LevelService()
 	{
-		current_level = nullptr;
+		level_controller = nullptr;
 
 		createLevelController();
 	}
@@ -41,7 +42,7 @@ namespace Level
 
 	void LevelService::createLevel(LevelNumber level_to_load)
 	{
-		current_level = &level_to_load;
+		current_level = level_to_load;
 	}
 
 	void LevelService::destroy()

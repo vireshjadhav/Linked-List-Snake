@@ -10,7 +10,7 @@ namespace Level
 	{
 	private:
 		LevelController* level_controller;
-		LevelNumber* current_level;
+		LevelNumber current_level;
 
 		void createLevelController();
 		void destroy();

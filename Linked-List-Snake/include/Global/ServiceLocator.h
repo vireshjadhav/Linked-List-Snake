@@ -4,6 +4,7 @@
 #include "UI/UIService.h"
 #include "Sound/SoundService.h"
 #include "Time/TimeService.h"
+#include "Level/LevelService.h"
 
 namespace Global
 {
@@ -13,6 +14,7 @@ namespace Global
         Event::EventService* event_service;
         Graphics::GraphicService* graphic_service;
         Sound::SoundService* sound_service;
+        Level::LevelService* level_service;
         UI::UIService* ui_service;
         Time::TimeService* time_service;
 
@@ -34,6 +36,7 @@ namespace Global
         Sound::SoundService* getSoundService();
         UI::UIService* getUIService();
         Time::TimeService* getTimeService();
+        Level::LevelService* getLevelService();
         void deleteServiceLocator();
     };
 }

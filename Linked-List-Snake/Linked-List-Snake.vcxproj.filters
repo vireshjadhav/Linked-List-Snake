@@ -167,5 +167,15 @@
     <ClInclude Include="include\UI\LevelSelection\LevelSelectionUIController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+
+    <ClInclude Include="include\Player\PlayerService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Player\SnakeController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Player\Direction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

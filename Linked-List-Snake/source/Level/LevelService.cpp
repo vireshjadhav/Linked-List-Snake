@@ -11,6 +11,7 @@ namespace Level
 	LevelService::LevelService()
 	{
 		level_controller = nullptr;
+
 		createLevelController();
 	}
 
@@ -23,7 +24,6 @@ namespace Level
 	{
 		level_controller = new LevelController();
 	}
-
 
 	void LevelService::initialize()
 	{
@@ -43,16 +43,10 @@ namespace Level
 	void LevelService::createLevel(LevelNumber level_to_load)
 	{
 		current_level = level_to_load;
-		spawnPlayer();
-	}
-
-	void LevelService::spawnPlayer()
-	{
-		ServiceLocator::getInstance()->getPlayerService()->spawnPlayer();
 	}
 
 	void LevelService::destroy()
 	{
-		delete(level_controller);
+		delete level_controller;
 	}
 }

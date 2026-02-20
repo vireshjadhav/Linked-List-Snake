@@ -22,6 +22,13 @@ namespace Player
 		void initializeBodyPartImage();
 		sf::Vector2f getBodyPartScreenPosition();
 		float getRotationAngle();
+		sf::Vector2i getNextPosition();
+		sf::Vector2i getNextPositionUp();
+		sf::Vector2i getNextPositionDown();
+		sf::Vector2i getNextPositionRight();
+		sf::Vector2i getNextPositionLeft();
+
+		void setPosition(sf::Vector2i position);
 		void destroy();
 
 	public:
@@ -31,6 +38,9 @@ namespace Player
 		void initialize(float width, float height, sf::Vector2i pos, Direction dir);
 		void setDirection(Direction direction);
 		void updatePosition();
+
+		Direction getDirection();
+		sf::Vector2i getPosition();
 		void render();
 	};
 }

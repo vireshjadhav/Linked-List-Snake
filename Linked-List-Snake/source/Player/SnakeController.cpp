@@ -86,7 +86,7 @@ namespace Player
 
 	void SnakeController::render()
 	{
-
+		
 	}
 
 	void SnakeController::destroy()

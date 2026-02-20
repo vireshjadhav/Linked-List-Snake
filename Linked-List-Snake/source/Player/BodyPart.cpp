@@ -1,9 +1,12 @@
 //BodyPart.cpp
 #include "Player/BodyPart.h"
 #include "Global/Config.h"
+#include "Level/LevelView.h"
 
 using namespace Global;
 using namespace UI::UIElement;
+using namespace Level;
+
 namespace Player
 {
 	BodyPart::BodyPart()
@@ -33,14 +36,44 @@ namespace Player
 		bodypart_image->setOriginAtCentre();
 	}
 
-	sf::Vector2f BodyPart::getBodyPartScreenPosition()
-	{
-
-	}
-
 	void BodyPart::createBodyPartImage()
 	{
 		bodypart_image = new ImageView();
+	}
+
+	sf::Vector2f BodyPart::getBodyPartScreenPosition()
+	{
+		float x_screen_position = LevelView::border_offset_left + (grid_position.x * bodypart_width) + (bodypart_width / 2);
+		float y_screen_position = LevelView::border_offset_top + (grid_position.y * bodypart_height) + (bodypart_height / 2);
+
+		return sf::Vector2f(x_screen_position, y_screen_position);
+	}
+
+	float BodyPart::getRotationAngle()
+	{
+		switch (direction)
+		{
+		case Direction::UP:
+			return 270.0f;
+		case Direction::DOWN:
+			return 90.0f;
+		case Direction::RIGHT:
+			return 0.0f;
+		case Direction::LEFT:
+			return 180.0f;
+		}
+	}
+
+	void BodyPart::setDirection(Direction direction)
+	{
+		this->direction = direction;
+	}
+
+	void BodyPart::updatePosition()
+	{
+		bodypart_image->setPosition(getBodyPartScreenPosition());
+		bodypart_image->setRotation(getRotationAngle());
+		bodypart_image->update();
 	}
 
 	void BodyPart::render()

@@ -136,6 +136,9 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="source\Level\LevelController.cpp" />
     <ClCompile Include="source\Level\LevelModel.cpp" />
+    <ClCompile Include="source\Player\BodyPart.cpp" />
+    <ClCompile Include="source\Player\PlayerService.cpp" />
+    <ClCompile Include="source\Player\SnakeController.cpp" />
     <ClCompile Include="source\UI\LevelSelection\LevelSelectionUIController.cpp" />
     <ClCompile Include="source\Level\LevelService.cpp" />
     <ClCompile Include="source\Level\LevelView.cpp" />
@@ -163,6 +166,10 @@
     <ClInclude Include="include\Level\LevelData.h" />
     <ClInclude Include="include\Level\LevelModel.h" />
     <ClInclude Include="include\Level\LevelNumber.h" />
+    <ClInclude Include="include\Player\BodyPart.h" />
+    <ClInclude Include="include\Player\Direction.h" />
+    <ClInclude Include="include\Player\PlayerService.h" />
+    <ClInclude Include="include\Player\SnakeController.h" />
     <ClInclude Include="include\UI\LevelSelection\LevelSelectionUIController.h" />
     <ClInclude Include="include\Level\LevelService.h" />
     <ClInclude Include="include\Level\LevelView.h" />

@@ -32,7 +32,10 @@ namespace Player
 
 	void SnakeController::spawnSnake()
 	{
-		single_linked_list->createHeadNode();
+		for (int i = 0; i < initial_snake_length; i++)
+		{
+			single_linked_list->insertNodeAtTail();
+		}
 	}
 
 	void SnakeController::processPlayerInput()
@@ -108,6 +111,7 @@ namespace Player
 
 	void SnakeController::destroy()
 	{
-
+		delete single_linked_list;
+		single_linked_list = nullptr;
 	}
 }

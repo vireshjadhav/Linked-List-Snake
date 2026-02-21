@@ -57,8 +57,8 @@ namespace Level
 	{
 		sf::RenderWindow* game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
 
-		grid_width = game_window->getSize().x - border_offset_left * 2;
-		grid_height = game_window->getSize().y - border_offset_top * 2;
+		grid_width = game_window->getSize().x - 2 * border_offset_left;
+		grid_height = game_window->getSize().y - 2 * border_offset_top;
 	}
 
 	void LevelView::destroy()

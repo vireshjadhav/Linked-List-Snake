@@ -10,10 +10,6 @@ namespace LinkedList
 
 	SingleLinkedList::~SingleLinkedList() = default;
 
-	Node* SingleLinkedList::createNode()
-	{
-		return new Node();
-	}
 
 	void SingleLinkedList::initialize(float width, float height, sf::Vector2i position, Direction direction)
 	{
@@ -23,8 +19,20 @@ namespace LinkedList
 		default_direction = direction;
 	}
 
+	void SingleLinkedList::createHeadNode()
+	{
+		head_node = createNode();
+		head_node->body_part.initialize(node_width, node_height, default_position, default_direction);
+		return;
+	}
+
 	void SingleLinkedList::render()
 	{
+		head_node->body_part.render();
+	}
 
+	Node* SingleLinkedList::createNode()
+	{
+		return new Node();
 	}
 }

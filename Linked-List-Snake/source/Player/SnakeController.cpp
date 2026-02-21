@@ -1,12 +1,20 @@
 //SnakeController.cpp
 #include "Player/SnakeController.h"
+#include "Global/ServiceLocator.h"
+#include "Level/LevelService.h"
 
 namespace Player
 {
+	using namespace LinkedList;
+	using namespace Global;
+	using namespace Level;
+
 	SnakeController::SnakeController()
 	{
 		current_snake_state = SnakeState::ALIVE;
 		current_snake_direction = default_direction;
+		single_linked_list = nullptr;
+		createLinkedList();
 	}
 
 	SnakeController::~SnakeController()
@@ -16,12 +24,15 @@ namespace Player
 
 	void SnakeController::initialize()
 	{
-		spawnSnake();
+		float width = ServiceLocator::getInstance()->getLevelService()->getCellWidth();
+		float height = ServiceLocator::getInstance()->getLevelService()->getCellHeight();
+
+		single_linked_list->initialize(width, height, default_position, default_direction);
 	}
 
 	void SnakeController::spawnSnake()
 	{
-		current_snake_direction = default_direction;
+		single_linked_list->createHeadNode();
 	}
 
 	void SnakeController::processPlayerInput()
@@ -75,8 +86,9 @@ namespace Player
 		{
 		case SnakeState::ALIVE:
 			processPlayerInput();
-			moveSnake();
+			updateSnakeDirection();
 			processSnakeCollision();
+			moveSnake();
 			break;
 		case SnakeState::DEAD:
 			handleRestart();
@@ -84,9 +96,14 @@ namespace Player
 		}
 	}
 
+	void SnakeController::createLinkedList()
+	{
+		single_linked_list = new SingleLinkedList();
+	}
+
 	void SnakeController::render()
 	{
-		
+		single_linked_list->render();
 	}
 
 	void SnakeController::destroy()

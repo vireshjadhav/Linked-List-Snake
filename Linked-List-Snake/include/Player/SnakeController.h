@@ -23,7 +23,11 @@ namespace Player
 		Direction current_snake_direction;
 		SnakeState current_snake_state;
 
+		float elapsed_duration = 0.0f;
+
 		LinkedList::SingleLinkedList* single_linked_list;
+
+		const float movement_frame_duration = 0.1f;
 
 		void processPlayerInput();
 		void updateSnakeDirection();
@@ -31,6 +35,7 @@ namespace Player
 		void processSnakeCollision();
 		void createLinkedList();
 		void handleRestart();
+		void delayUpdate();
 		void reset();
 		void destroy();
 

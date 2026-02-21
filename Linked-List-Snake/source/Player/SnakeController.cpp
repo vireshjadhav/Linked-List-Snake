@@ -3,6 +3,7 @@
 #include "Global/ServiceLocator.h"
 #include "Level/LevelService.h"
 #include "Event/EventService.h"
+#include "Time/TimeService.h"
 
 namespace Player
 {
@@ -10,6 +11,7 @@ namespace Player
 	using namespace Global;
 	using namespace Level;
 	using namespace Event;
+	using namespace Time;
 
 	SnakeController::SnakeController()
 	{
@@ -93,6 +95,19 @@ namespace Player
 
 	}
 
+	void SnakeController::delayUpdate()
+	{
+		elapsed_duration += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
+
+		if (elapsed_duration >= movement_frame_duration)
+		{
+			elapsed_duration = 0;
+			updateSnakeDirection();
+			processPlayerInput();
+			moveSnake();
+		}
+	}
+
 	SnakeState SnakeController::getSnakeState() 
 	{ 
 		return current_snake_state; 
@@ -108,9 +123,7 @@ namespace Player
 		switch (current_snake_state)
 		{
 		case SnakeState::ALIVE:
-			processPlayerInput();
-			updateSnakeDirection();
-			moveSnake();
+			delayUpdate();
 			processSnakeCollision();
 			break;
 		case SnakeState::DEAD:

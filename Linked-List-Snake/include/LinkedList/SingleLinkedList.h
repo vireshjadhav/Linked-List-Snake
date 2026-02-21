@@ -23,6 +23,8 @@ namespace LinkedList
 		~SingleLinkedList();
 
 		void insertNodeAtTail();
+		void updateNodeDirection(Direction direction_to_set);
+		void updateNodePosition();
 
 		sf::Vector2i getNewNodePosition(Node* reference_node);
 

@@ -15,8 +15,8 @@ namespace Level
 		float cell_height;
 
 	public:
-		static const int number_of_rows = 50;
-		static const int number_of_columns = 28;
+		static const int number_of_rows = 28;
+		static const int number_of_columns = 50;
 
 		LevelModel();
 		~LevelModel();
@@ -25,7 +25,7 @@ namespace Level
 		void update();
 		void render();
 
-		int getCellWidth();
-		int getCellHeight();
+		float getCellWidth();
+		float getCellHeight();
 	};
 }

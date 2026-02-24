@@ -62,7 +62,6 @@ namespace Player
 		{
 			current_snake_direction = Direction::RIGHT;
 		}
-
 	}
 
 	void SnakeController::updateSnakeDirection()
@@ -103,7 +102,7 @@ namespace Player
 		{
 			elapsed_duration = 0;
 			updateSnakeDirection();
-			processPlayerInput();
+			processSnakeCollision();
 			moveSnake();
 		}
 	}
@@ -123,8 +122,8 @@ namespace Player
 		switch (current_snake_state)
 		{
 		case SnakeState::ALIVE:
+			processPlayerInput();
 			delayUpdate();
-			processSnakeCollision();
 			break;
 		case SnakeState::DEAD:
 			handleRestart();

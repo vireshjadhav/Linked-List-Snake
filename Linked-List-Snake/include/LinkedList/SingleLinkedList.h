@@ -28,6 +28,8 @@ namespace LinkedList
 
 		sf::Vector2i getNewNodePosition(Node* reference_node);
 
+		bool processNodeCollision();
+
 		void initialize(float width, float height, sf::Vector2i position, Direction direction);
 		void render();
 	};

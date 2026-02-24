@@ -27,6 +27,8 @@ namespace Level
 		
 		void spawnPlayer();
 
+		void spawnLevelElements(LevelNumber level_to_load);
+
 		float getCellWidth();
 		float getCellHeight();
 

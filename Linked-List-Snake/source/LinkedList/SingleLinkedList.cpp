@@ -124,8 +124,6 @@ namespace LinkedList
 
 	void SingleLinkedList::removeNodeAtHead()
 	{
-		if (head_node == nullptr) return;
-
 		Node* cur_node = head_node;
 		head_node = head_node->next;
 

@@ -13,6 +13,12 @@ namespace Player
 		DEAD
 	};
 
+	enum class InputState
+	{
+		WAITING,
+		PROCESSING
+	};
+
 	class SnakeController
 	{
 	private:
@@ -32,6 +38,8 @@ namespace Player
 		const float restart_duration = 2.0f;
 		
 		float restart_counter = 0.0f;
+
+		InputState current_input_state = InputState::PROCESSING;
 
 		void processPlayerInput();
 		void updateSnakeDirection();

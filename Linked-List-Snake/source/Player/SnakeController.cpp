@@ -126,8 +126,8 @@ namespace Player
 			if (current_snake_state == SnakeState::ALIVE)
 			{
 				moveSnake();
-				current_input_state = InputState::WAITING;
 			}
+			current_input_state = InputState::WAITING;
 		}
 	}
 

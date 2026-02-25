@@ -1,0 +1,19 @@
+diff a/Linked-List-Snake/Linked-List-Snake.vcxproj.filters b/Linked-List-Snake/Linked-List-Snake.vcxproj.filters	(rejected hunks)
+@@ -167,5 +167,17 @@
+      <ClInclude Include="include\UI\LevelSelection\LevelSelectionUIController.h">
+        <Filter>Header Files</Filter>
+      </ClInclude>
+++<<<<<<< HEAD
+++=======
++     <ClInclude Include="include\Player\PlayerService.h">
++       <Filter>Header Files</Filter>
++     </ClInclude>
++     <ClInclude Include="include\Player\SnakeController.h">
++       <Filter>Header Files</Filter>
++     </ClInclude>
++     <ClInclude Include="include\Player\Direction.h">
++       <Filter>Header Files</Filter>
++     </ClInclude>
+++>>>>>>> 1adc7bb (feat: add snake position and direction setup in SnakeController)
+    </ItemGroup>
+  </Project>

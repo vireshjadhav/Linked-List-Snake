@@ -37,7 +37,7 @@ namespace Level
 		void update();
 		void render();
 
-		int getGridWidth();
-		int getGridHeight();
+		float getGridWidth();
+		float getGridHeight();
 	};
 }

@@ -7,9 +7,11 @@ namespace Global
 	using namespace Event;
 	using namespace Sound;
 	using namespace Level;
+	using namespace Player;
 	using namespace UI;
 	using namespace Main;
 	using namespace Time;
+	using namespace Element;
 
 
 	ServiceLocator::ServiceLocator()
@@ -20,7 +22,8 @@ namespace Global
 		level_service = nullptr;
 		ui_service = nullptr;
 		time_service = nullptr;
-
+		element_service = nullptr;
+		player_service = nullptr;
 
 		createServices();
 	}
@@ -35,6 +38,8 @@ namespace Global
 		level_service = new LevelService();
 		ui_service = new UIService();
 		time_service = new TimeService();
+		element_service = new ElementService();
+		player_service = new PlayerService();
 	}
 
 	void ServiceLocator::initialize()
@@ -43,8 +48,10 @@ namespace Global
 		sound_service->initialize();
 		event_service->initialize();
 		level_service->initialize();
+		player_service->initialize();
 		ui_service->initialize();
 		time_service->initialize();
+		element_service->initialize();
 	}
 
 	void ServiceLocator::update()
@@ -55,11 +62,11 @@ namespace Global
 		if (GameService::getGameState() == GameState::GAMEPLAY)
 		{
 			level_service->update();
+			player_service->update();
+			element_service->update();
 		}
-
 		ui_service->update();
 		time_service->update();
-
 	}
 
 	void ServiceLocator::render()
@@ -68,6 +75,8 @@ namespace Global
 		if (GameService::getGameState() == GameState::GAMEPLAY)
 		{
 			level_service->render();
+			player_service->render();
+			element_service->render();
 		}
 		ui_service->render();
 	}
@@ -80,6 +89,8 @@ namespace Global
 		delete(event_service);
 		delete(time_service);
 		delete(level_service);
+		delete(element_service);
+		delete(player_service);
 	}
 
 	ServiceLocator* ServiceLocator::getInstance()
@@ -99,6 +110,11 @@ namespace Global
 	Time::TimeService* ServiceLocator::getTimeService() { return time_service; }
 
 	LevelService* ServiceLocator::getLevelService() { return level_service; }
+
+	Player::PlayerService* ServiceLocator::getPlayerService() { return player_service; }
+
+	ElementService* ServiceLocator::getElementService() { return element_service; }
+
 
 	void ServiceLocator::deleteServiceLocator() { delete(this); }
 }

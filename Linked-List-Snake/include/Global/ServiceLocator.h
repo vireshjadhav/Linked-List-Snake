@@ -5,7 +5,6 @@
 #include "Sound/SoundService.h"
 #include "Time/TimeService.h"
 #include "Level/LevelService.h"
-
 #include "Player/PlayerService.h"
 #include "Element/ElementService.h"
 
@@ -18,6 +17,7 @@ namespace Global
         Event::EventService* event_service;
         Graphics::GraphicService* graphic_service;
         Sound::SoundService* sound_service;
+        Player::PlayerService* player_service;
         Level::LevelService* level_service;
         UI::UIService* ui_service;
         Time::TimeService* time_service;

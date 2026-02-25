@@ -105,6 +105,9 @@
     <ClCompile Include="source\Element\ElementService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\Food\FoodItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Main\GameService.h">
@@ -185,7 +188,6 @@
     <ClInclude Include="include\UI\LevelSelection\LevelSelectionUIController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-
     <ClInclude Include="include\Player\PlayerService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -211,6 +213,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Element\ElementService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Food\FoodType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Food\FoodItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

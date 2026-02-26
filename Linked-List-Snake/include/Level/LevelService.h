@@ -15,6 +15,8 @@ namespace Level
 		void createLevelController();
 		void destroy();
 
+		void spawnFood();
+
 	public:
 		LevelService();
 		~LevelService();

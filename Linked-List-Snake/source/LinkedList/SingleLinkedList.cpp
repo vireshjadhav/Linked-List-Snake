@@ -79,6 +79,21 @@ namespace LinkedList
 		}
 	}
 
+	std::vector<sf::Vector2i> SingleLinkedList::getNodesPositionList()
+	{
+		std::vector<sf::Vector2i> node_position_list;
+
+		Node* cur_node = head_node;
+
+		while (cur_node != nullptr)
+		{
+			node_position_list.push_back(cur_node->body_part.getPosition());
+			cur_node = cur_node->next;
+		}
+
+		return node_position_list;
+	}
+
 	void SingleLinkedList::updateNodeDirection(Direction direction_to_set)
 	{
 		Node* cur_node = head_node;

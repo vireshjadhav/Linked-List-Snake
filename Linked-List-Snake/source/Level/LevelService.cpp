@@ -57,7 +57,7 @@ namespace Level
 
 	void LevelService::spawnFood()
 	{
-		ServiceLocator::getInstance()->getFoodService()->startFoodSpawing();
+		ServiceLocator::getInstance()->getFoodService()->startFoodSpawning();
 	}
 
 	void LevelService::destroy()

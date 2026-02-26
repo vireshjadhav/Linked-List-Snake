@@ -26,5 +26,7 @@ namespace Element
 
 		void update();
 		void render();
+
+		sf::Vector2i getObstaclePosition();
 	};
 }

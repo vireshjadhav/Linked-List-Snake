@@ -4,6 +4,7 @@
 #include "Level/LevelService.h"
 #include "Event/EventService.h"
 #include "Time/TimeService.h"
+#include "Sound/SoundService.h"
 
 namespace Player
 {
@@ -12,6 +13,7 @@ namespace Player
 	using namespace Level;
 	using namespace Event;
 	using namespace Time;
+	using namespace Sound;
 
 	SnakeController::SnakeController()
 	{
@@ -83,10 +85,28 @@ namespace Player
 
 	void SnakeController::processSnakeCollision()
 	{
+		processBodyCollision();
+		processElementsCollision();
+		processFoodCollision();
+	}
+
+	void SnakeController::processBodyCollision()
+	{
 		if (single_linked_list->processNodeCollision())
 		{
 			current_snake_state = SnakeState::DEAD;
+			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::DEATH);
 		}
+	}
+
+	void SnakeController::processElementsCollision()
+	{
+
+	}
+
+	void SnakeController::processFoodCollision()
+	{
+
 	}
 
 	void SnakeController::handleRestart()
@@ -104,7 +124,7 @@ namespace Player
 		current_snake_direction = default_direction;
 		elapsed_duration = 0.0f;
 		restart_counter = 0.0f;
-		current_input_state == InputState::WAITING;
+		current_input_state = InputState::WAITING;
 	}
 
 	void SnakeController::respawnSnake()

@@ -2,9 +2,12 @@
 #include "Element/ElementService.h"
 #include "Element/ElementData.h"
 #include "Element/Obstacle.h"
+#include "LinkedList/Node.h"
 
 namespace Element
 {
+	using namespace LinkedList;
+
 	ElementService::ElementService() = default;
 
 	ElementService::~ElementService() = default;
@@ -50,6 +53,19 @@ namespace Element
 		{
 			obstacle_list[i]->render();
 		}
+	}
+
+	bool ElementService::processElementsCollision(LinkedList::Node* head_node)
+	{
+		for (int i = 0; i < obstacle_list.size(); ++i)
+		{
+			if (obstacle_list[i]->getObstaclePosition() == head_node->body_part.getPosition()||
+				obstacle_list[i]->getObstaclePosition() == head_node->body_part.getNextPosition())
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 	std::vector<sf::Vector2i> ElementService::getElementsPositionList()

@@ -146,6 +146,11 @@ namespace LinkedList
 		delete(cur_node);
 	}
 
+	Node* SingleLinkedList::getHeadNode()
+	{
+		return head_node;
+	}
+
 	void SingleLinkedList::removeAllNodes()
 	{
 		if (head_node == nullptr) return;

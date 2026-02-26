@@ -35,5 +35,6 @@ namespace Food
 		void render();
 
 		FoodType getFoodType();
+		sf::Vector2i getFoodPosition();
 	};
 }

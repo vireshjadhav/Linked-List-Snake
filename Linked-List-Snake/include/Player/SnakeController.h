@@ -1,12 +1,14 @@
 //SnakeController.h
 #pragma once
 #include <SFML/System/Vector2.hpp>
-#include "Direction.h"
+#include "LinkedList/Node.h"
 #include "LinkedList/SingleLinkedList.h"
+#include "Food/FoodType.h"
 
-using namespace LinkedList;
 namespace Player
 {
+	using namespace Food;
+
 	enum class SnakeState
 	{
 		ALIVE,
@@ -69,5 +71,7 @@ namespace Player
 		void respawnSnake();
 		void setSnakeState(SnakeState state);
 		SnakeState getSnakeState();
+
+		void onFoodCollected(FoodType food_type);
 	};
 }

@@ -7,6 +7,7 @@ namespace Sound
 	{
 		BUTTON_CLICK,
 		DEATH,
+		PICKUP
 	};
 
 	class SoundService
@@ -18,6 +19,7 @@ namespace Sound
 		sf::Sound sound_effect;
 		sf::SoundBuffer buffer_button_click;
 		sf::SoundBuffer buffer_death;
+		sf::SoundBuffer buffer_pickup;
 
 		void loadBackgroundMusicFromFile();
 		void loadSoundFromFile();

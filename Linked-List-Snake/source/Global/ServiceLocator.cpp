@@ -8,6 +8,7 @@ namespace Global
 	using namespace Sound;
 	using namespace Level;
 	using namespace Player;
+	using namespace Food;
 	using namespace UI;
 	using namespace Main;
 	using namespace Time;
@@ -24,6 +25,7 @@ namespace Global
 		time_service = nullptr;
 		element_service = nullptr;
 		player_service = nullptr;
+		food_service = nullptr;
 
 		createServices();
 	}
@@ -40,6 +42,7 @@ namespace Global
 		time_service = new TimeService();
 		element_service = new ElementService();
 		player_service = new PlayerService();
+		food_service = new FoodService();
 	}
 
 	void ServiceLocator::initialize()
@@ -52,6 +55,7 @@ namespace Global
 		ui_service->initialize();
 		time_service->initialize();
 		element_service->initialize();
+		food_service->initialize();
 	}
 
 	void ServiceLocator::update()
@@ -64,6 +68,7 @@ namespace Global
 			level_service->update();
 			player_service->update();
 			element_service->update();
+			food_service->update();
 		}
 		ui_service->update();
 		time_service->update();
@@ -77,6 +82,7 @@ namespace Global
 			level_service->render();
 			player_service->render();
 			element_service->render();
+			food_service->render();
 		}
 		ui_service->render();
 	}
@@ -91,6 +97,7 @@ namespace Global
 		delete(level_service);
 		delete(element_service);
 		delete(player_service);
+		delete(food_service);
 	}
 
 	ServiceLocator* ServiceLocator::getInstance()
@@ -115,6 +122,7 @@ namespace Global
 
 	ElementService* ServiceLocator::getElementService() { return element_service; }
 
+	FoodService* ServiceLocator::getFoodService() { return food_service; }
 
 	void ServiceLocator::deleteServiceLocator() { delete(this); }
 }

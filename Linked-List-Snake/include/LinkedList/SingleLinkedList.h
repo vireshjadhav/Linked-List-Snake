@@ -22,6 +22,7 @@ namespace LinkedList
 
 		sf::Vector2i default_position;
 		Direction default_direction;
+		int linked_list_size;
 
 		Node* createNode();
 
@@ -30,6 +31,7 @@ namespace LinkedList
 		~SingleLinkedList();
 
 		void insertNodeAtTail();
+		void insertNodeAtHead();
 		void updateNodeDirection(Direction direction_to_set);
 		void updateNodePosition();
 

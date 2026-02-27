@@ -62,6 +62,8 @@ namespace Player
 			return 0.0f;
 		case Direction::LEFT:
 			return 180.0f;
+		default:
+			return 0.0f;
 		}
 	}
 
@@ -78,6 +80,25 @@ namespace Player
 			return getNextPositionLeft();
 		case Direction::RIGHT:
 			return getNextPositionRight();
+		default:
+			return grid_position;
+		}
+	}
+
+	sf::Vector2i BodyPart::getPrevPosition()
+	{
+		switch (direction)
+		{
+		case Direction::UP:
+			return getNextPositionDown();
+		case Direction::DOWN:
+			return getNextPositionUp();
+		case Direction::LEFT:
+			return getNextPositionRight();
+		case Direction::RIGHT:
+			return getNextPositionLeft();
+		default:
+			return grid_position;
 		}
 	}
 

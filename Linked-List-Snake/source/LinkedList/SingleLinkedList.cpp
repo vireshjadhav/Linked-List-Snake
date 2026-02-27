@@ -295,6 +295,28 @@ namespace LinkedList
 		removeNodeAt(middle_index);
 	}
 
+	void SingleLinkedList::removeNodeAtTail()
+	{
+		if (head_node == nullptr) return;
+		linked_list_size--;
+
+		Node* cur_node = head_node;
+
+		if (cur_node->next == nullptr)
+		{
+			removeNodeAtHead();
+			return;
+		}
+
+		while (cur_node->next->next != nullptr)
+		{
+			cur_node = cur_node->next;
+		}
+
+		delete(cur_node->next);
+		cur_node->next = nullptr;
+	}
+
 	void SingleLinkedList::shiftNodesAfterRemoval(Node* cur_node)
 	{
 		sf::Vector2i prev_node_position = cur_node->body_part.getPosition();

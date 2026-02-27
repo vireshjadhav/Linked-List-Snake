@@ -32,6 +32,8 @@ namespace LinkedList
 
 		void insertNodeAtTail();
 		void insertNodeAtHead();
+		void insertNodeAtIndex(int index);
+		void shiftNodesAfterInsertion(Node* new_node, Node* cur_node, Node* prev_node);
 		void updateNodeDirection(Direction direction_to_set);
 		void updateNodePosition();
 

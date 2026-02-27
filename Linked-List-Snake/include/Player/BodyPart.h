@@ -28,7 +28,7 @@ namespace Player
 		sf::Vector2i getNextPositionRight();
 		sf::Vector2i getNextPositionLeft();
 
-		void setPosition(sf::Vector2i position);
+
 		void destroy();
 
 	public:
@@ -40,6 +40,7 @@ namespace Player
 		void updatePosition();
 		sf::Vector2i getNextPosition();
 		sf::Vector2i getPrevPosition();
+		void setPosition(sf::Vector2i position);
 
 		Direction getDirection();
 		sf::Vector2i getPosition();

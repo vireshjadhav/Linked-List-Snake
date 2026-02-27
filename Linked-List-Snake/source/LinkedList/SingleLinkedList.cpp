@@ -240,11 +240,14 @@ namespace LinkedList
 
 	void SingleLinkedList::removeNodeAtHead()
 	{
+		if (head_node == nullptr) return;
+
 		Node* cur_node = head_node;
 		head_node = head_node->next;
 
 		cur_node->next = nullptr;
 		delete(cur_node);
+		linked_list_size--;
 	}
 
 	Node* SingleLinkedList::getHeadNode()

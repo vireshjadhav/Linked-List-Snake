@@ -49,6 +49,11 @@ namespace LinkedList
 		bool processNodeCollision();
 
 		void removeNodeAtHead();
+		void shiftNodesAfterRemoval(Node* cur_node);
+		void removeNodeAtIndex(int index);
+		void removeNodeAt(int index);
+		void removeNodeAtHead();
+		void removeNodeAtMiddle();
 		void removeAllNodes();
 
 		void initialize(float width, float height, sf::Vector2i position, Direction direction);

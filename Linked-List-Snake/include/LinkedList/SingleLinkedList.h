@@ -52,7 +52,6 @@ namespace LinkedList
 		void shiftNodesAfterRemoval(Node* cur_node);
 		void removeNodeAtIndex(int index);
 		void removeNodeAt(int index);
-		void removeNodeAtHead();
 		void removeNodeAtMiddle();
 		void removeNodeAtTail();
 		void removeAllNodes();

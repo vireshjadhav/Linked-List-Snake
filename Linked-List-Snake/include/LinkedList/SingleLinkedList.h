@@ -58,7 +58,10 @@ namespace LinkedList
 		void removeAllNodes();
 		void removeHalfNodes();
 		Node* findNodeAtIndex(int index);
+		Direction getReverseDirection(Direction reference_direction);
+		void reverseNodeDirections();
 
+		Direction reverse();
 
 		void initialize(float width, float height, sf::Vector2i position, Direction direction);
 		void initializeNode(Node* new_node, Node* reference_node, Operation operation);

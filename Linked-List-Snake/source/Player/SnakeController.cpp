@@ -290,6 +290,18 @@ namespace Player
 		return last_linked_list_operation;
 	}
 
+	bool SnakeController::isSnakeSizeMinimum()
+	{
+		if (single_linked_list->getSnakeSize() < minimum_snake_size)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 	void SnakeController::destroy()
 	{
 		delete single_linked_list;

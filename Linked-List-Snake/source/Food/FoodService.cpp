@@ -85,7 +85,17 @@ namespace Food
 
 	FoodType FoodService::getRandomFoodType()
 	{
-		std::uniform_int_distribution<int> distribution(0, FoodItem::number_of_foods - 1);
+		int upper_bound = 0;
+		if (ServiceLocator::getInstance()->getPlayerService()->isSnakeSizeMinimum())
+		{
+			upper_bound = FoodItem::number_of_foods - FoodItem::number_of_healty_foods;
+		}
+		else
+		{
+			upper_bound = FoodItem::number_of_foods;
+		}
+
+		std::uniform_int_distribution<int> distribution(0, upper_bound - 1);
 
 		return static_cast<FoodType>(distribution(random_engine));
 	}

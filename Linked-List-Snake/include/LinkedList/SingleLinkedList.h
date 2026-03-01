@@ -60,6 +60,8 @@ namespace LinkedList
 		Direction getReverseDirection(Direction reference_direction);
 		void reverseNodeDirections();
 
+		int getSnakeSize();
+
 		Direction reverse();
 
 		void initialize(float width, float height, sf::Vector2i position, Direction direction);

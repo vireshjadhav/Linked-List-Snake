@@ -440,6 +440,11 @@ namespace LinkedList
 		}
 	}
 
+	int SingleLinkedList::getSnakeSize()
+	{
+		return linked_list_size;
+	}
+
 	Node* SingleLinkedList::createNode()
 	{
 		return new Node();

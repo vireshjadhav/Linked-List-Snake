@@ -1,6 +1,7 @@
 //PlayerService.h
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "Player/SnakeController.h"
 
 namespace Player
 {
@@ -24,5 +25,11 @@ namespace Player
 
 		void spawnPlayer();
 		std::vector<sf::Vector2i> getCurrentSnakePositionList();
+
+		int getPlayerScore();
+
+		TimeComplexity getTimeComplexity();
+		LinkedListOperations getLastOperation();
+		bool isSnakeSizeMinimum();
 	};
 }

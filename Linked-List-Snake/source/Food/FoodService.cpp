@@ -12,6 +12,7 @@ namespace Food
 	using namespace Global;
 	using namespace Level;
 	using namespace Player;
+	using namespace LinkedList;
 
 	FoodService::FoodService() : random_engine(random_device())
 	{
@@ -84,7 +85,17 @@ namespace Food
 
 	FoodType FoodService::getRandomFoodType()
 	{
-		std::uniform_int_distribution<int> distribution(0, FoodItem::number_of_foods - 1);
+		int upper_bound = 0;
+		if (ServiceLocator::getInstance()->getPlayerService()->isSnakeSizeMinimum())
+		{
+			upper_bound = FoodItem::number_of_foods - FoodItem::number_of_healty_foods;
+		}
+		else
+		{
+			upper_bound = FoodItem::number_of_foods;
+		}
+
+		std::uniform_int_distribution<int> distribution(0, upper_bound - 1);
 
 		return static_cast<FoodType>(distribution(random_engine));
 	}
@@ -123,6 +134,17 @@ namespace Food
 		}
 	}
 
+	bool FoodService::processFoodCollision(LinkedList::Node* head_node, FoodType& out_food_type)
+	{
+		if (current_food_item && current_food_item->getFoodPosition() == head_node->body_part.getPosition())
+		{
+			out_food_type = current_food_item->getFoodType();
+			return true;
+		}
+
+		return false;
+	}
+
 	void FoodService::updateElapsedDuration()
 	{
 		elapsed_duration += ServiceLocator::getInstance()->getTimeService()->getDeltaTime();
@@ -136,5 +158,6 @@ namespace Food
 	void FoodService::destroyFood()
 	{
 		if (current_food_item) delete(current_food_item);
+		current_food_item = nullptr;
 	}
 }

@@ -5,6 +5,13 @@
 
 namespace LinkedList
 {
+	enum class Operation
+	{
+		HEAD,
+		MID,
+		TAIL,
+	};
+
 	class SingleLinkedList
 	{
 	private:
@@ -15,6 +22,7 @@ namespace LinkedList
 
 		sf::Vector2i default_position;
 		Direction default_direction;
+		int linked_list_size;
 
 		Node* createNode();
 
@@ -23,19 +31,41 @@ namespace LinkedList
 		~SingleLinkedList();
 
 		void insertNodeAtTail();
+		void insertNodeAtHead();
+		void insertNodeAtIndex(int index);
+		void insertNodeAtMiddle();
+		void shiftNodesAfterInsertion(Node* new_node, Node* cur_node, Node* prev_node);
 		void updateNodeDirection(Direction direction_to_set);
 		void updateNodePosition();
 
-		sf::Vector2i getNewNodePosition(Node* reference_node);
+		sf::Vector2i getNewNodePosition(Node* reference_node, Operation operation);
+
+		Node* getHeadNode();
 
 		std::vector<sf::Vector2i>  getNodesPositionList();
+
+		int findMiddleNode();
 
 		bool processNodeCollision();
 
 		void removeNodeAtHead();
+		void shiftNodesAfterRemoval(Node* cur_node);
+		void removeNodeAtIndex(int index);
+		void removeNodeAt(int index);
+		void removeNodeAtMiddle();
+		void removeNodeAtTail();
 		void removeAllNodes();
+		void removeHalfNodes();
+		Node* findNodeAtIndex(int index);
+		Direction getReverseDirection(Direction reference_direction);
+		void reverseNodeDirections();
+
+		int getSnakeSize();
+
+		Direction reverse();
 
 		void initialize(float width, float height, sf::Vector2i position, Direction direction);
+		void initializeNode(Node* new_node, Node* reference_node, Operation operation);
 		void render();
 	};
 }

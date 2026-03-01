@@ -26,6 +26,8 @@ namespace Food
 	public:
 		static const int number_of_foods = 8;
 
+		static const int number_of_healty_foods = 4;
+
 		FoodItem();
 		~FoodItem();
 
@@ -35,5 +37,6 @@ namespace Food
 		void render();
 
 		FoodType getFoodType();
+		sf::Vector2i getFoodPosition();
 	};
 }

@@ -1,12 +1,34 @@
 //SnakeController.h
 #pragma once
 #include <SFML/System/Vector2.hpp>
-#include "Direction.h"
+#include "LinkedList/Node.h"
 #include "LinkedList/SingleLinkedList.h"
+#include "Food/FoodType.h"
 
-using namespace LinkedList;
 namespace Player
 {
+	using namespace Food;
+
+	enum class TimeComplexity
+	{
+		NONE,
+		ONE,
+		N,
+	};
+
+	enum class LinkedListOperations
+	{
+		NONE,
+		INSERT_AT_HEAD,
+		INSERT_AT_TAIL,
+		INSERT_AT_MID,
+		REMOVE_AT_HEAD,
+		REMOVE_AT_TAIL,
+		REMOVE_AT_MID,
+		DELETE_HALF_LIST,
+		REVERSE_LIST,
+	};
+
 	enum class SnakeState
 	{
 		ALIVE,
@@ -23,21 +45,24 @@ namespace Player
 	{
 	private:
 		const int initial_snake_length = 10;
+		const float movement_frame_duration = 0.1f;
+		const float restart_duration = 2.0f;
+		const int minimum_snake_size = 3;
+
+		int player_score= 0;
+
+		float elapsed_duration = 0.0f;
+		float restart_counter = 0.0f;
+
 
 		const sf::Vector2i default_position = sf::Vector2i(25, 13);
 		const Direction default_direction = Direction::RIGHT;
+		TimeComplexity time_complexity;
+		LinkedListOperations last_linked_list_operation;
 		Direction current_snake_direction;
 		SnakeState current_snake_state;
 
-		float elapsed_duration = 0.0f;
-
 		LinkedList::SingleLinkedList* single_linked_list;
-
-		const float movement_frame_duration = 0.1f;
-
-		const float restart_duration = 2.0f;
-		
-		float restart_counter = 0.0f;
 
 		InputState current_input_state = InputState::PROCESSING;
 
@@ -50,6 +75,10 @@ namespace Player
 		void delayUpdate();
 		void reset();
 		void destroy();
+
+		void processBodyCollision();
+		void processElementsCollision();
+		void processFoodCollision();
 
 	public:
 		SnakeController();
@@ -65,5 +94,13 @@ namespace Player
 		void respawnSnake();
 		void setSnakeState(SnakeState state);
 		SnakeState getSnakeState();
+
+		int getPlayerScore();
+		TimeComplexity getTimeComplexity();
+		LinkedListOperations getLastOperation();
+
+		void onFoodCollected(FoodType food_type);
+
+		bool isSnakeSizeMinimum();
 	};
 }

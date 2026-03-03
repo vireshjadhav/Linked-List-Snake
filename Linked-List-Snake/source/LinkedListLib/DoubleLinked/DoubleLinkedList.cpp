@@ -177,6 +177,7 @@ namespace LinkedListLib
 				cur_node = cur_node->next;
 				current_index++;
 			}
+
 			prev_node->next = cur_node->next;
 
 			Node* next_node = cur_node->next;
@@ -211,6 +212,16 @@ namespace LinkedListLib
 
 			int midIndex = findMiddleNode();
 			removeNodeAt(midIndex);
+		}
+
+		void DoubleLinkedList::removeAllNodes()
+		{
+			if (head_node == nullptr) return;
+
+			while (head_node != nullptr)
+			{
+				removeNodeAtHead();
+			}
 		}
 
 		void DoubleLinkedList::shiftNodesAfterRemoval(Node* cur_node)

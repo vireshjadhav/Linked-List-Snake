@@ -179,6 +179,7 @@
     <ClInclude Include="include\Level\LevelData.h" />
     <ClInclude Include="include\Level\LevelModel.h" />
     <ClInclude Include="include\Level\LevelNumber.h" />
+    <ClInclude Include="include\LinkedListLib\DoubleLinked\DoubleLinkedList.h" />
     <ClInclude Include="include\LinkedListLib\DoubleLinked\DoubleNode.h" />
     <ClInclude Include="include\LinkedListLib\LinkedList.h" />
     <ClInclude Include="include\LinkedListLib\SingleLinked\SingleLinkedList.h" />

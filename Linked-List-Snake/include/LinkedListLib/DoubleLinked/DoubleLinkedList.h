@@ -1,19 +1,19 @@
-//SingleLinkedList.h
+//DoubleLinkedList.h
 #pragma once
 #include "LinkedListLib/LinkedList.h"
 
 namespace LinkedListLib
 {
-	namespace SingleLinked
+	namespace DoubleLinked
 	{
-		class SingleLinkedList : public LinkedList
+		class DoubleLinkedList : public LinkedList
 		{
 		protected:
 			virtual Node* createNode() override;
 
 		public:
-			SingleLinkedList();
-			~SingleLinkedList();
+			DoubleLinkedList();
+			~DoubleLinkedList();
 
 			void insertNodeAtTail() override;
 			void insertNodeAtHead() override;
@@ -25,7 +25,7 @@ namespace LinkedListLib
 			void removeNodeAtHead() override;
 			void removeNodeAtMiddle() override;
 			void removeNodeAt(int index) override;
-			void removeNodeAtIndex(int index) ;
+			void removeNodeAtIndex(int index);
 			void removeAllNodes() override;
 			void removeHalfNodes() override;
 			void shiftNodesAfterRemoval(Node* cur_node);

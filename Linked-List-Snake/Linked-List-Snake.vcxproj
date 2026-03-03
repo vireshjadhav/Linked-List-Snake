@@ -140,6 +140,7 @@
     <ClCompile Include="source\Food\FoodService.cpp" />
     <ClCompile Include="source\Level\LevelController.cpp" />
     <ClCompile Include="source\Level\LevelModel.cpp" />
+    <ClCompile Include="source\LinkedListLib\DoubleLinked\DoubleLinkedList.cpp" />
     <ClCompile Include="source\LinkedListLib\LinkedList.cpp" />
     <ClCompile Include="source\LinkedListLib\SingleLinked\SingleLinkedList.cpp" />
     <ClCompile Include="source\Player\BodyPart.cpp" />

@@ -6,7 +6,7 @@ namespace LinkedListLib
 {
 	namespace SingleLinked 
 	{
-		struct SingleLinked : public Node
+		struct SingleNode: public Node
 		{ };
 	}
 }

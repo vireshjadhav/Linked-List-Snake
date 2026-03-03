@@ -246,5 +246,25 @@ namespace LinkedListLib
 			}
 		}
 
+		void DoubleLinkedList::removeHalfNodes()
+		{
+			if (linked_list_size <= 0) return;
+
+			int half_lenght = linked_list_size / 2;
+			int half_node_index = half_lenght - 1;
+
+			Node* prev_node = findNodeAtIndex(half_node_index);
+			Node* cur_node = prev_node->next;
+
+			while (cur_node != nullptr)
+			{
+				Node* node_to_delete = cur_node;
+				cur_node = cur_node->next;
+
+				delete(node_to_delete);
+				linked_list_size--;
+			}
+			prev_node->next = nullptr;
+		}
 	}
 }

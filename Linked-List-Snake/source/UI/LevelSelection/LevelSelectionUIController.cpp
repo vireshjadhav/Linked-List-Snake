@@ -1,13 +1,13 @@
 //LevelSelectionUIController.cpp
-#include "../../include/UI/LevelSelection/LevelSelectionUIController.h"
-#include "../../include/Main/GameService.h"
-#include "../../include/Graphics/GraphicService.h"
-#include "../../include/Sound/SoundService.h"
-#include "../../include/Event/EventService.h"
-#include "../../include/UI/UIElement/ButtonView.h"
-#include "../../include/UI/UIElement/ImageView.h"
-#include "../../include/Global/Config.h"
-#include "../../include/Global/ServiceLocator.h"
+#include "UI/LevelSelection/LevelSelectionUIController.h"
+#include "Main/GameService.h"
+#include "Graphics/GraphicService.h"
+#include "Sound/SoundService.h"
+#include "Event/EventService.h"
+#include "UI/UIElement/ButtonView.h"
+#include "UI/UIElement/ImageView.h"
+#include "Global/Config.h"
+#include "Global/ServiceLocator.h"
 
 
 namespace UI
@@ -63,9 +63,9 @@ namespace UI
 		{
 			float x_position = calculateLeftOffsetForButton();
 
-			level_one_button->initialize("Level One Button", Config::single_linked_list_button_texture_path, button_width, button_height, sf::Vector2f(x_position, level_one_button_y_position));
-			level_two_button->initialize("Level Two Button", Config::double_linked_list_button_texture_path, button_width, button_height, sf::Vector2f(x_position, level_two_button_y_position));
-			menu_button->initialize("Menu Button", Config::menu_button_texture_path, button_width, button_height, sf::Vector2f(x_position, menu_button_y_position));
+			level_one_button->initialize("Level One", Config::single_linked_list_button_texture_path, button_width, button_height, sf::Vector2f(x_position, level_one_button_y_position));
+			level_two_button->initialize("Level Two", Config::double_linked_list_button_texture_path, button_width, button_height, sf::Vector2f(x_position, level_two_button_y_position));
+			menu_button->initialize("Menu", Config::menu_button_texture_path, button_width, button_height, sf::Vector2f(x_position, menu_button_y_position));
 		}
 
 		float LevelSelectionUIController::calculateLeftOffsetForButton()
@@ -77,22 +77,22 @@ namespace UI
 
 		void LevelSelectionUIController::registerButtonCallback()
 		{
-			level_one_button->registerCallbackFuntion(std::bind(&LevelSelectionUIController::singleLinkedListButtonCallback, this));
-			level_two_button->registerCallbackFuntion(std::bind(&LevelSelectionUIController::doubleLinkedlistButtonCallback, this));
+			level_one_button->registerCallbackFuntion(std::bind(&LevelSelectionUIController::levelOneButtonCallback, this));
+			level_two_button->registerCallbackFuntion(std::bind(&LevelSelectionUIController::levelTwoButtonCallback, this));
 			menu_button->registerCallbackFuntion(std::bind(&LevelSelectionUIController::menuButtonCallback, this));
 		}
 
-		void LevelSelectionUIController::singleLinkedListButtonCallback()
+		void LevelSelectionUIController::levelOneButtonCallback()
 		{
 			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
-			GameService::setGameState(GameState::GAMEPLAY);
+			GameService::setGameState(GameState::LINKED_LIST_SELECTION);
 			ServiceLocator::getInstance()->getLevelService()->createLevel(Level::LevelNumber::ONE);
 		}
 
-		void LevelSelectionUIController::doubleLinkedlistButtonCallback()
+		void LevelSelectionUIController::levelTwoButtonCallback()
 		{
 			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
-			GameService::setGameState(GameState::GAMEPLAY);
+			GameService::setGameState(GameState::LINKED_LIST_SELECTION);
 			ServiceLocator::getInstance()->getLevelService()->createLevel(Level::LevelNumber::TWO);
 		}
 

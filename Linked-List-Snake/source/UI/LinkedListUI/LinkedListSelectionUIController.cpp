@@ -1,5 +1,5 @@
 //LinkedListSelection.cpp
-#include "UI/LinkedListSelection/LinkedListSelection.h"
+#include "UI/LinkedListUI/LinkedListSelectionUIController.h"
 #include "Main/GameService.h"
 #include "Global/Config.h"
 #include "Global/ServiceLocator.h"
@@ -10,46 +10,46 @@ namespace UI
 	using namespace Global;
 	using namespace Main;
 
-	namespace LinkedListSelection
+	namespace LinkedListUI
 	{
-		LinkedListSelection::LinkedListSelection()
+		LinkedListSelectionUIController::LinkedListSelectionUIController()
 		{
 			createButton();
 			createImage();
 		}
 
-		LinkedListSelection::~LinkedListSelection()
+		LinkedListSelectionUIController::~LinkedListSelectionUIController()
 		{
 			destroy();
 		}
 
-		void LinkedListSelection::initialize()
+		void LinkedListSelectionUIController::initialize()
 		{
 			initializeBackgroundImage();
 			initializeButtons();
 			registerButtonCallback();
 		}
 
-		void LinkedListSelection::createButton()
+		void LinkedListSelectionUIController::createButton()
 		{
 			single_linked_list_button = new ButtonView();
 			double_linked_list_button = new ButtonView();
 			menu_button = new ButtonView();
 		}
 
-		void LinkedListSelection::createImage()
+		void LinkedListSelectionUIController::createImage()
 		{
 			background_image = new ImageView();
 		}
 
-		void LinkedListSelection::initializeBackgroundImage()
+		void LinkedListSelectionUIController::initializeBackgroundImage()
 		{
 			sf::RenderWindow* game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
 			background_image->initialize(Config::background_texture_path, game_window->getSize().x, game_window->getSize().y, sf::Vector2f(0,0));
 			background_image->setImageAlpha(background_alpha);
 		}
 
-		void LinkedListSelection::initializeButtons()
+		void LinkedListSelectionUIController::initializeButtons()
 		{
 			float x_offset = calculateLeftOffsetForButton();
 
@@ -58,33 +58,40 @@ namespace UI
 			menu_button->initialize("Menu", Config::menu_button_texture_path, button_width, button_height, sf::Vector2f(x_offset, menu_button_y_position));
 		}
 
-		float LinkedListSelection::calculateLeftOffsetForButton()
+		float LinkedListSelectionUIController::calculateLeftOffsetForButton()
 		{
 			sf::RenderWindow* game_window = ServiceLocator::getInstance()->getGraphicService()->getGameWindow();
 			return (static_cast<float>(game_window->getSize().x / 2) - button_width / 2);
 		}
 
-		void LinkedListSelection::registerButtonCallback()
+		void LinkedListSelectionUIController::registerButtonCallback()
 		{
-
+			single_linked_list_button->registerCallbackFuntion(std::bind(&LinkedListSelectionUIController::singleLinkedListButtonCallback, this));
+			double_linked_list_button->registerCallbackFuntion(std::bind(&LinkedListSelectionUIController::doubleLinkedListButtonCallback, this));
+			menu_button->registerCallbackFuntion(std::bind(&LinkedListSelectionUIController::menuButtonCallback, this));
 		}
 
-		void LinkedListSelection::singleLinkedListButtonCallback()
+		void LinkedListSelectionUIController::singleLinkedListButtonCallback()
 		{
-
+			ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
+			GameService::setGameState(GameState::GAMEPLAY);
+			ServiceLocator::getInstance()->getLevelService()->createLevel(Level::LinkedListType::SINGLE_LINKED_LIST);
 		}
 
-		void LinkedListSelection::doubleLinkedListButtonCallback()
+		void LinkedListSelectionUIController::doubleLinkedListButtonCallback()
 		{
-
+			ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
+			GameService::setGameState(GameState::GAMEPLAY);
+			ServiceLocator::getInstance()->getLevelService()->createLevel(Level::LinkedListType::DOUBLE_LINKED_LIST);
 		}
 
-		void LinkedListSelection::menuButtonCallback()
+		void LinkedListSelectionUIController::menuButtonCallback()
 		{
-
+			ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
+			GameService::setGameState(GameState::MAIN_MENU);
 		}
 
-		void LinkedListSelection::update()
+		void LinkedListSelectionUIController::update()
 		{
 			background_image->update();
 			single_linked_list_button->update();
@@ -92,7 +99,7 @@ namespace UI
 			menu_button->update();
 		}
 
-		void LinkedListSelection::render()
+		void LinkedListSelectionUIController::render()
 		{
 			background_image->render();
 			single_linked_list_button->render();
@@ -100,7 +107,7 @@ namespace UI
 			menu_button->render();
 		}
 
-		void LinkedListSelection::show()
+		void LinkedListSelectionUIController::show()
 		{
 			background_image->show();
 			single_linked_list_button->show();
@@ -108,7 +115,7 @@ namespace UI
 			menu_button->show();
 		}
 
-		void LinkedListSelection::destroy()
+		void LinkedListSelectionUIController::destroy()
 		{
 			delete(background_image);
 			delete(single_linked_list_button);

@@ -63,7 +63,9 @@ namespace LinkedListLib
 		bool processNodeCollision();
 		void reverseNodeDirections();
 
-		std::vector<sf::Vector2i> getNodePositionList();
+		int getSnakeSize();
+
+		std::vector<sf::Vector2i> getNodesPositionList();
 
 	};
 }

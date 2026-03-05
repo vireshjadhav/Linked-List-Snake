@@ -64,7 +64,7 @@ namespace LinkedListLib
 
 	void LinkedList::initializeNode(Node* new_node, Node* reference_node, Operation operation)
 	{
-		if (reference_node != nullptr)
+		if (reference_node == nullptr)
 		{
 			new_node->body_part.initialize(node_width, node_height, default_position, default_direction);
 			return;
@@ -78,9 +78,9 @@ namespace LinkedListLib
 	{
 		if (head_node == nullptr) return false;
 
-		Node* cur_node = head_node;
-
 		sf::Vector2i predicted_head_pos = head_node->body_part.getNextPosition();
+
+		Node* cur_node = head_node->next;
 
 		while (cur_node != nullptr)
 		{
@@ -118,11 +118,11 @@ namespace LinkedListLib
 		return linked_list_size;
 	}
 
-	std::vector<sf::Vector2i> LinkedList::getNodePositionList()
+	std::vector<sf::Vector2i> LinkedList::getNodesPositionList()
 	{
-		Node* cur_node = head_node;
-
 		std::vector<sf::Vector2i> node_position_list;
+
+		Node* cur_node = head_node;
 
 		while (cur_node != nullptr)
 		{
@@ -139,7 +139,7 @@ namespace LinkedListLib
 		Node* fast = head_node;
 		int midIndex = 0;
 
-		while (fast != nullptr || fast->next != nullptr);
+		while (fast != nullptr && fast->next != nullptr)
 		{
 			slow = slow->next;
 			fast = fast->next->next;
@@ -151,7 +151,6 @@ namespace LinkedListLib
 
 	Node* LinkedList::findNodeAtIndex(int index)
 	{
-		if (index < 0 || index >= linked_list_size) return;
 		Node* cur_node = head_node;
 		Node* prev_node = nullptr;
 		int current_index = 0;
@@ -192,5 +191,10 @@ namespace LinkedListLib
 		}
 
 		return  default_direction;
+	}
+
+	int LinkedList::getSnakeSize()
+	{
+		return linked_list_size;
 	}
 }

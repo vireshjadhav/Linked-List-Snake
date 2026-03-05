@@ -1,13 +1,16 @@
 //SnakeController.h
 #pragma once
 #include <SFML/System/Vector2.hpp>
-#include "LinkedList/Node.h"
-#include "LinkedList/SingleLinkedList.h"
+#include "LinkedListLib/Node.h"
+#include "LinkedListLib/LinkedList.h"
 #include "Food/FoodType.h"
+#include "Level/LevelConfig.h"
 
 namespace Player
 {
 	using namespace Food;
+	using namespace LinkedListLib;
+	using namespace Level;
 
 	enum class TimeComplexity
 	{
@@ -54,6 +57,7 @@ namespace Player
 		float elapsed_duration = 0.0f;
 		float restart_counter = 0.0f;
 
+		LinkedList* linked_list;
 
 		const sf::Vector2i default_position = sf::Vector2i(25, 13);
 		const Direction default_direction = Direction::RIGHT;
@@ -62,15 +66,12 @@ namespace Player
 		Direction current_snake_direction;
 		SnakeState current_snake_state;
 
-		LinkedList::SingleLinkedList* single_linked_list;
-
 		InputState current_input_state = InputState::PROCESSING;
 
 		void processPlayerInput();
 		void updateSnakeDirection();
 		void moveSnake();
 		void processSnakeCollision();
-		void createLinkedList();
 		void handleRestart();
 		void delayUpdate();
 		void reset();
@@ -87,6 +88,10 @@ namespace Player
 		void initialize();
 		void update();
 		void render();
+
+		void initializeLinkedList();
+
+		void createLinkedList(LinkedListType level_type);
 
 		std::vector<sf::Vector2i> getCurrentSnakePositionList();
 

@@ -1,15 +1,16 @@
 //LinkedListSelection.h
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "UI/Interface/IUIController.h"
 #include "UI/UIElement/ImageView.h"
 #include "UI/UIElement/ButtonView.h"
 
 namespace UI
 {
-	namespace LinkedListSelection
+	namespace LinkedListUI
 	{
 
-		class LinkedListSelection
+		class LinkedListSelectionUIController:public Interface::IUIController
 		{
 		private:
 			const float button_width = 400.0f;
@@ -42,8 +43,8 @@ namespace UI
 			void destroy();
 
 		public:
-			LinkedListSelection();
-			~LinkedListSelection();
+			LinkedListSelectionUIController();
+			~LinkedListSelectionUIController();
 
 			void initialize();
 

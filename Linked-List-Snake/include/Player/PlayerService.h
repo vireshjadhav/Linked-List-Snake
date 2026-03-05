@@ -34,5 +34,6 @@ namespace Player
 		TimeComplexity getTimeComplexity();
 		LinkedListOperations getLastOperation();
 		bool isSnakeSizeMinimum();
+		bool isSnakeDead();
 	};
 }

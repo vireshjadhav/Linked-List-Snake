@@ -71,6 +71,11 @@ namespace Player
 		return snake_controller->isSnakeSizeMinimum();
 	}
 
+	bool PlayerService::isSnakeDead()
+	{
+		return snake_controller->isSnakeDead();
+	}
+
 	void PlayerService::destroy()
 	{
 		delete(snake_controller);

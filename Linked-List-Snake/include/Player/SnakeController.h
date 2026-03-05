@@ -107,5 +107,6 @@ namespace Player
 		void onFoodCollected(FoodType food_type);
 
 		bool isSnakeSizeMinimum();
+		bool isSnakeDead();
 	};
 }

@@ -157,7 +157,7 @@ namespace UI
 				break;
 
 			default:
-				last_operation_string = " ";
+				last_operation_string = "";
 				break;
 			}
 

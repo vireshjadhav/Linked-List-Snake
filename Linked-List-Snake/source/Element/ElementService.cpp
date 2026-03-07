@@ -2,11 +2,11 @@
 #include "Element/ElementService.h"
 #include "Element/ElementData.h"
 #include "Element/Obstacle.h"
-#include "LinkedList/Node.h"
+#include "LinkedListLib/Node.h"
 
 namespace Element
 {
-	using namespace LinkedList;
+	using namespace LinkedListLib;
 
 	ElementService::ElementService() = default;
 
@@ -55,7 +55,7 @@ namespace Element
 		}
 	}
 
-	bool ElementService::processElementsCollision(LinkedList::Node* head_node)
+	bool ElementService::processElementsCollision(LinkedListLib::Node* head_node)
 	{
 		for (int i = 0; i < obstacle_list.size(); ++i)
 		{

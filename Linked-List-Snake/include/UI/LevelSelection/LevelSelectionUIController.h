@@ -35,8 +35,8 @@ namespace UI
 
 			void registerButtonCallback();
 
-			void singleLinkedListButtonCallback();
-			void doubleLinkedlistButtonCallback();
+			void levelOneButtonCallback();
+			void levelTwoButtonCallback();
 			void menuButtonCallback();
 
 			void destroy();

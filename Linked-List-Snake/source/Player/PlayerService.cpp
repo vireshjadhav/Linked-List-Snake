@@ -1,10 +1,13 @@
 //PlayerService.cpp
 #include "Player/PlayerService.h"
 #include "Player/SnakeController.h"
-
+#include "Global/ServiceLocator.h"
 
 namespace Player
 {
+	using namespace Global;
+	using namespace Level;
+
 	PlayerService::PlayerService()
 	{
 		snake_controller = nullptr;
@@ -23,6 +26,8 @@ namespace Player
 
 	void PlayerService::spawnPlayer()
 	{
+		level_type = ServiceLocator::getInstance()->getLevelService()->getCurrentLinkedListType();
+		snake_controller->createLinkedList(level_type);
 		snake_controller->spawnSnake();
 	}
 	
@@ -64,6 +69,11 @@ namespace Player
 	bool PlayerService::isSnakeSizeMinimum()
 	{
 		return snake_controller->isSnakeSizeMinimum();
+	}
+
+	bool PlayerService::isSnakeDead()
+	{
+		return snake_controller->isSnakeDead();
 	}
 
 	void PlayerService::destroy()

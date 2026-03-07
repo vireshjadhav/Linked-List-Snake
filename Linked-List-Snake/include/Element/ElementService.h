@@ -2,7 +2,7 @@
 #pragma once
 #include <vector>
 #include <SFML/System/Vector2.hpp>
-#include "LinkedList/Node.h"
+#include "LinkedListLib/Node.h"
 
 namespace Element
 {
@@ -28,7 +28,7 @@ namespace Element
 		void update();
 		void render();
 
-		bool processElementsCollision(LinkedList::Node* head_position);
+		bool processElementsCollision(LinkedListLib::Node* head_position);
 
 		std::vector<sf::Vector2i> getElementsPositionList();
 	};

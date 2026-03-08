@@ -48,6 +48,8 @@ namespace UI
 		{
 			level_one_button = new ButtonView();
 			level_two_button = new ButtonView();
+			level_three_button = new ButtonView();
+			level_four_button = new ButtonView();
 			menu_button = new ButtonView();
 		}
 
@@ -65,6 +67,8 @@ namespace UI
 
 			level_one_button->initialize("Level One", Config::level_one_button_texture_path, button_width, button_height, sf::Vector2f(x_position, level_one_button_y_position));
 			level_two_button->initialize("Level Two", Config::level_two_button_texture_path, button_width, button_height, sf::Vector2f(x_position, level_two_button_y_position));
+			level_three_button->initialize("Level Three", Config::level_three_button_texture_path, button_width, button_height, sf::Vector2f(x_position, level_three_button_y_position));
+			level_four_button->initialize("Level Four", Config::level_four_button_texture_path, button_width, button_height, sf::Vector2f(x_position, level_four_button_y_position));
 			menu_button->initialize("Menu", Config::menu_button_texture_path, button_width, button_height, sf::Vector2f(x_position, menu_button_y_position));
 		}
 
@@ -79,6 +83,8 @@ namespace UI
 		{
 			level_one_button->registerCallbackFuntion(std::bind(&LevelSelectionUIController::levelOneButtonCallback, this));
 			level_two_button->registerCallbackFuntion(std::bind(&LevelSelectionUIController::levelTwoButtonCallback, this));
+			level_three_button->registerCallbackFuntion(std::bind(&LevelSelectionUIController::levelThreeButtonCallback, this));
+			level_four_button->registerCallbackFuntion(std::bind(&LevelSelectionUIController::levelFourButtonCallback, this));
 			menu_button->registerCallbackFuntion(std::bind(&LevelSelectionUIController::menuButtonCallback, this));
 		}
 
@@ -96,6 +102,20 @@ namespace UI
 			ServiceLocator::getInstance()->getLevelService()->setCurrentLevelNumber(Level::LevelNumber::TWO);
 		}
 
+		void LevelSelectionUIController::levelThreeButtonCallback()
+		{
+			ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
+			GameService::setGameState(GameState::LINKED_LIST_SELECTION);
+			ServiceLocator::getInstance()->getLevelService()->setCurrentLevelNumber(Level::LevelNumber::THREE);
+		}
+
+		void LevelSelectionUIController::levelFourButtonCallback()
+		{
+			ServiceLocator::getInstance()->getSoundService()->playSound(Sound::SoundType::BUTTON_CLICK);
+			GameService::setGameState(GameState::LINKED_LIST_SELECTION);
+			ServiceLocator::getInstance()->getLevelService()->setCurrentLevelNumber(Level::LevelNumber::FOUR);
+		}
+
 		void LevelSelectionUIController::menuButtonCallback()
 		{
 			ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::BUTTON_CLICK);
@@ -107,6 +127,8 @@ namespace UI
 			background_image->update();
 			level_one_button->update();
 			level_two_button->update();
+			level_three_button->update();
+			level_four_button->update();
 			menu_button->update();
 		}
 
@@ -115,6 +137,8 @@ namespace UI
 			background_image->render();
 			level_one_button->render();
 			level_two_button->render();
+			level_three_button->render();
+			level_four_button->render();
 			menu_button->render();
 		}
 
@@ -123,6 +147,8 @@ namespace UI
 			background_image->show();
 			level_one_button->show();
 			level_two_button->show();
+			level_three_button->show();
+			level_four_button->show();
 			menu_button->show();
 		}
 
@@ -131,6 +157,8 @@ namespace UI
 			delete(background_image);
 			delete(level_one_button);
 			delete(level_two_button);
+			delete(level_three_button);
+			delete(level_four_button);
 			delete(menu_button);
 		}
 	}

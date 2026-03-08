@@ -38,6 +38,10 @@ namespace Global
 
 	const sf::String Config::level_two_button_texture_path = "assets/textures/level_two_button.png";
 
+	const sf::String Config::level_three_button_texture_path = "assets/textures/level_three_button.png";
+
+	const sf::String Config::level_four_button_texture_path = "assets/textures/level_four_button.png";
+
 	const sf::String Config::single_linked_list_button_texture_path = "assets/textures/single_linked_list_button.png";
 
 	const sf::String Config::double_linked_list_button_texture_path = "assets/textures/double_linked_list_button.png";

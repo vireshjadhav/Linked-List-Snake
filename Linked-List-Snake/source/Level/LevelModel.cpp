@@ -23,6 +23,8 @@ namespace Level
 	{
 		level_configurations.push_back(LevelData(Level::LevelNumber::ONE, &level_one_element_list));
 		level_configurations.push_back(LevelData(Level::LevelNumber::TWO, &level_two_element_list));
+		level_configurations.push_back(LevelData(Level::LevelNumber::THREE, &level_three_element_list));
+		level_configurations.push_back(LevelData(Level::LevelNumber::FOUR, &level_four_element_list));
 	}
 
 	float LevelModel::getCellWidth() { return cell_width; }
